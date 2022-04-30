@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>作業06</title>
+    <style>
+        h4 {
+            color: red;
+        }
+        p {
+            margin: 5px;
+        }
+        div {
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+<script>
+
+    document.write("<div>九九乘法表</div>");
+    document.write("<table border='1' border-collapse:collapse;  cellpadding='0' cellspacing='0'>");
+    function nTimesNtable(n){
+        for (i=1;i<=n;i++){
+            document.write("<tr>");
+            for (j=1;j<=n;j++){
+            document.write("<td>");
+                document.write(i + "X" + j + "=" + i*j + "  ");
+                document.write("<td>")
+            }
+            document.write("<tr>");
+        }
+        document.write("<table>");
+    }
+    nTimesNtable(9);
+
+</script>
+
+</body>
+
+</html>

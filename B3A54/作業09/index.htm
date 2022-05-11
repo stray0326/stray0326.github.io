@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>作業08</title>
+    <style>
+        h4 {
+            color: red;
+        }
+       label {
+            color: blue;
+      }
+      input {
+            color: brown;
+      }
+      div {
+            color: blue;
+            margin: 5px;
+     }
+  </style>
+    </head>
+
+<body>
+<form id="form01">
+    <label>姓名: </label>
+    <input type="text" name="name01" value="洪碩陽"><br>
+    <label>收件住址: </label>
+    <input type="text" name="address01" value="新北市淡水區樹梅坑21號8樓"
+    <label>電話: </label>;label>
+    <input type="tel" name="tel01" value="0966281232"><br>
+    <label>電子郵件: </label>
+    <input type="email" name="email01" value="stray0326@gmail.com"><br>
+    <label>指定送貨日期: </label>
+    <input type="date" name="date01"><br>
+    <label>飲料種類: (四選一) </label><br>
+    <input type="radio" name="drinks" id="drinks01" value="珍珠奶茶">珍珠奶茶 75元<br>
+    <input type="radio" name="drinks" id="drinks02" value="多多綠茶">多多綠茶 60元<br>
+    <input type="radio" name="drinks" id="drinks03" value="鮮奶茶">鮮奶茶 65元<br>
+    <input type="radio" name="drinks" id="drinks04" value="奶綠茶">奶綠茶 65元<br>
+</form>
+<br>
+<button onclick="shoppingInfo()"><h4>結帳</h4></button>
+<div id="demo"></div>
+<script>
+     function shoppingInfo() {
+     const x = document.getElementById("form01");
+     var item = "";
+     var price = 0;
+     var text ="<h4>您的購物資訊如下:</h4>";
+     var i;
+     for (i = 0; i < 5; i++) {
+         switch (i) {
+             case 0:
+             item = "姓名: ";
+             break;
+             case 1:
+             item = "收件住址: ";
+             break;
+             case 2:
+             item = "電話: ";
+             break;
+             case 3:
+             item = "電子郵件: ";
+             break;
+             case 4:
+             item = "指定送貨日期: ";
+             break;
+    }
+    text += item + x.elements[i].value + "<br>";
+}
+for (i = 5; i <= 7; i++) {
+    if (x.elements[i].checked == true) {
+        switch (i) {
+       case 5:

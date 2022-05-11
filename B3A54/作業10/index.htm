@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-<form id="demo01">
+<form id="form01">
     <label>帶輸入的資料個數為</label>
     <input type="number" name="number01" placeholder="0"><br>
 </form>
@@ -32,14 +32,14 @@
       text01 += i + ". ";
       text01 += "<input type=\"text\">" + "<br>";
 }
-text01 += "</form>;
+text01 += "</form>";
 text01 += "<button onclick=\"stat()\">計算統計量</button>";
 document.getElementById("demo01").innerHTML = text01;
 }
 function stat(){
-  const y = document.getElementById("form02);
+  const y = document.getElementById("form02");
   var sum = 0;
-  var sum01 =0;
+  var sum01 = 0;
   text02 = "";
   for(i=0;i<no;i++){
     sum += Number(y.elements[i].value);

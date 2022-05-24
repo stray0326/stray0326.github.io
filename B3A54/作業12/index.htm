@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>課堂作業12</title>
+    <style>
+      h4 {
+        color: red;
+      }
+      div{
+        color: blue;
+        margin: 5px;
+      }
+      table {
+            width: 40%;
+            border-color: dodgerblue;
+            border-style:solid;
+            border-collapse: collapse;
+        }
+        tr {
+            text-align: left;
+            border-color: dodgerblue;
+            border-style:solid;
+        }
+        td {
+            vertical-align: middle;
+            border-color: dodgerblue;
+            border-style:solid;
+        }
+        td:nth-child(1){
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+<form id="form01">
+    姓名: <input type="text" name="name01" value="洪碩陽"><br>
+    收件住址: <input type="text" name="address01" value="台北市中山區民權西路11號"><br>
+    電話: <input type="tel" name="tel01" value="0906418910"><br>
+    電子郵件: <input type="email" name="email01" value="stray0326@gmail.com"><br>
+    指定送貨日期: <input type="date" name="date01"><br>
+    飲料種類: <br><input type="checkbox" name="drinks" id="drinks01" value="可口可樂(1箱)">可口可樂(1箱) 418元;
+    購買數量: <input type="number" name="number01"><br>
+    <input type="checkbox" name="drinks" id="drinks02" value="百事可樂(2箱)">百事可樂(2箱) 758元;
+    購買數量: <input type="number" name="number02"><br>
+    <input type="checkbox" name="drinks" id="drinks03" value="古道梅子綠茶(1箱)">古道梅子綠茶(1箱) 300元;
+    購買數量: <input type="number" name="number03"><br>
+    <input type="checkbox" name="drinks" id="drinks04" value="Fin(1箱)">Fin(1箱) 290元;
+    購買數量: <input type="number" name="number04"><br>
+</form>
+
+<button onclick="shoppingInfo()"><h4>結帳</h4></button>
+<div id="demo"></div>
+<script>
+    var text = "<h4>您的購物資訊如下:</h4>";  //text為全域變數
+    var drinks = function (DrinksType, DrinksPrice, no){
+    text += "<table>";
+        this.Type = drinksType;
+        this.Price = drinksPrice;
+        this.subTotal =function(no){
+            text += "<tr>";
+                text += "<td>" + "飲料種類: " + "</td>";
+                text += "<td>" + x.elements[i].value + "</td>";
+                text += "</tr>";
+                text += "<tr>";
+                text += "<td>" + "價格合計: " + "</td>";
+                text += "<td>" + price + "元</td>";
+                text += "</tr>";
+        };
+    };
+    var drinks01 = new drinks("可口可樂(1箱)",418, 0)
+    var drinks02 = new drinks("百事可樂(2箱)",758, 0)
+    var drinks03 = new drinks("古道梅子綠茶(1箱)",300, 0)
+    var drinks04 = new drinks("Fin(1箱)",290, 0)
+    function shoppingInfo() {
+        var x = document.getElementById("form01");
+        var item = "";
+        var sumToPay = 0;
+        var i;
+
+        for (i = 0; i < 5; i++){
+            switch (i) {
+                case 0: item = "姓名: "; break;
+                case 1: item = "收件住址: "; break;
+                case 2: item = "電話: "; break;
+                case 3: item = "電子郵件: "; break;
+                case 4: item = "指定送貨日期: "; break;
+            }
+            text += item + x.elements[i].value + "<br>";
+            text += "<td>" + item + "</td>";
+            text += "<td>" + x.elements[i].value + "</td>";
+            text += "</tr>";
+        }
+    for (i=5; i<=9; i++) {
+        if(x.elements[i].checked === true){
+            text += "<tr>";
+            switch(i){
+                case 5: drinks01.no = x.elements[i+1].value;
+                        sumTopay += drinks01.Price * drinks01.no;
+                        drinks01.subTotal(drinks01.no);
+                        break;
+                case 7: drinks02.no = x.elements[i+1].value;
+                        sumTopay += drinks02.Price * drinks02.no;
+                        drinks02.subTotal(drinks02.no);
+                        break;
+                case 9: drinks03.no = x.elements[i+1].value;
+                        sumTopay += drinks03.Price * drinks03.no;
+                        drinks03.subTotal(drinks03.no);
+                        break;
+                case 11: drinks04.no = x.elements[i+1].value;
+                        sumTopay += drinks04.Price * drinks04.no;
+                        drinks04.subTotal(drinks04.no);
+                        break;
+            }
+        }
+    }
+        text += "價格合計: " + sumToPay + "元<br>";
+        text += "</table>";
+        document.getElementById("demo").innerHTML = text;
+    }
+</script>
+</body>
+</html>
+
+
